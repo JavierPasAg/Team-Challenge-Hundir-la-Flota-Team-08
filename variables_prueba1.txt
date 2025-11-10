@@ -1,0 +1,22 @@
+Variables: Constantes del juego
+
+Bienvenida
+
+Usuarios:
+Máquina
+Usuario
+
+Tablero x2:
+filas = 10
+Columnas = 10
+
+Barcos por jugador:
+b1(tamaño 1)= 4 barcos
+b2 (tamaño 2)= 3 barcos 
+b3 (tamaño 3)= 2 barcos
+b4 (tamaño 4) = 1 barco
+
+Movimientos:
+mov_barco = "O"
+mov_tocado = "X"
+mov_agua = "-"
