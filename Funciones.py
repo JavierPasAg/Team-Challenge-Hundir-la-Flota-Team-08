@@ -1,4 +1,5 @@
 #Funciones
+import numpy as np
 import random
 
 #Crear nuestro tablero:
