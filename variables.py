@@ -1,17 +1,17 @@
 #Variables
 
-bienvenida = "¡BIENVENIDO A HUNDIR LA FLOTA!" \
-"1.Tu tablero y el de la máquina son de 10x10 casillas." \
-"2. Hay distintos barcos que debes hundir:"
-"   - 4 barcos de 1 casilla"
-"   - 3 barcos de 2 casillas"
-"   - 2 barcos de 3 casillas"
-"   - 1 barco de 4 casillas"
-"3. Cada turno, dispara a una coordenada (fila,columna). Ejemplo: 3,5"
-"   - Si aciertas, tu turno continúa."
-"   - Si fallas, le toca a la máquina."
-"4. El juego termina cuando un jugador pierde todos sus barcos."
-"¡Buena suerte!"
+bienvenida = """¡BIENVENIDO A HUNDIR LA FLOTA!\n
+1.Tu tablero y el de la máquina son de 10x10 casillas.\n
+2. Hay distintos barcos que debes hundir:\n
+   - 4 barcos de 1 casilla\n
+   - 3 barcos de 2 casillas\n
+   - 2 barcos de 3 casillas\n
+   - 1 barco de 4 casillas\n
+3. Cada turno, dispara a una coordenada (fila,columna). Ejemplo: 3,5\n
+   - Si aciertas, tu turno continúa.\n
+   - Si fallas, le toca a la máquina.\n
+4. El juego termina cuando un jugador pierde todos sus barcos.\n
+¡Buena suerte!"""
 
 
 usuario1 = "Máquina"

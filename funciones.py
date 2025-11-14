@@ -1,4 +1,4 @@
-from variables import valores_aleatorio,valores_manual,valores_norte,valores_sur,valores_este,valores_oeste
+from variables import valores_aleatorio,valores_manual,valores_norte,valores_sur,valores_este,valores_oeste, mov_tocado,mov_barco,mov_agua
 import numpy as np
 import random
 #Funciones
@@ -6,7 +6,7 @@ import random
 #Crear nuestro tablero:
 
 def crear_tablero(filas=10, columnas=10):
-    return np.full((filas, columnas),"")
+    return np.full((filas, columnas)," ")
 
 #Crear tablero de la máquina:
 
@@ -49,15 +49,11 @@ def disparo_maquina(tablero_usuario):
         break
     
     print(f"La máquina ha disparado en ({fila}, {columna}) y ha sido: {resultado.upper()}")
-    return fila, columna, resultado
+    return fila, columna, resultado, tablero_usuario
 
 # Funciones Sara
 filas = 10
 columnas = 10
-
-mov_barco = "O"
-mov_tocado = "X"
-mov_agua = "-"
 
 #Turno completo del usuario
 #Pide las coordenadas al usuario
@@ -71,7 +67,6 @@ def pedir_coordenadas_usuario():
  
     #Pide por teclado una fila y una columna válidas al usuario.
     #Devuelve (fila, col) como enteros.
-    
     while True:
         try:
             fila = int(input(f"Introduce la FILA (0 - {filas - 1}): "))
@@ -83,9 +78,10 @@ def pedir_coordenadas_usuario():
                 print("Coordenadas fuera del tablero. Inténtalo de nuevo.\n")
         except ValueError:
             print("Debes introducir NÚMEROS enteros. Inténtalo de nuevo.\n")
+    
+    return fila,col
 
-
-def recibir_disparo(fila, col):
+def recibir_disparo(fila, col,tablero_maquina,tablero_mascara):
 
     #Devuelve:
     # -1 -> ya se había disparado en esa casilla
@@ -93,23 +89,24 @@ def recibir_disparo(fila, col):
     # "0" -> si disparo se efectua en el agua
 
     #Comprobamos si se ha realizado un disparo en una coordenada
-    if tablero_impactos[fila,col] in (mov_tocado,mov_agua):
+    if tablero_mascara[fila,col] in (mov_tocado,mov_agua):
         print("Ya se habia disparado aqui")
         return -1
     
     #Si hay un barco
-    if tablero_barcos[fila,col] == mov_barco:
-        tableros_barcos[fila,col] = mov_tocado #Marco el barco tocado en el tablero de los barcos
-        tablero_impactos[fila,col] = mov_tocado #Marco el barco tocado en el tablero de los impactos
+    if tablero_maquina[fila,col] == mov_barco:
+        tablero_maquina[fila,col] = mov_tocado #Marco el barco tocado en el tablero de los barcos
+        tablero_mascara[fila,col] = mov_tocado #Marco el barco tocado en el tablero de los impactos
         print ("Tocado!")
-        return 1
-    
+        # return 1
+        return tablero_maquina,tablero_mascara
     #Si hay agua
     else:
-        tablero_impactos[fila,col] = mov_agua
+        tablero_mascara[fila,col] = mov_agua
         print("Has tocado agua")
         return 0
 
+    
 # Funciones Javier
 
 # Funcion para elegir la modalidad al colocar barcos
@@ -178,22 +175,22 @@ def posicionar_barco(barco, tablero):
 
         if not (0 <= x < tablero.shape[0] and 0 <= y < tablero.shape[1]):
             # raise ValueError
-            print(f"El barco {barco} no puede colocarse fuera del tablero {x,y}")
+            # print(f"El barco {barco} no puede colocarse fuera del tablero {x,y}")
             nuevo_barco  = []
             
         else: 
             if tablero[x,y] == 'O':
                 # raise ValueError
-                print(f"No es posible colocar el barco {barco} en una posición ocupada {x,y}")
+                # print(f"No es posible colocar el barco {barco} en una posición ocupada {x,y}")
                 nuevo_barco = []
                 
             elif comprobar_contiguos(tablero,x,y):
-                print(f"No es posible colocar el barco {barco} en una posición contigua a otro {x,y}")
+                # print(f"No es posible colocar el barco {barco} en una posición contigua a otro {x,y}")
                 nuevo_barco =[]
             else:
                 nuevo_barco.append([x,y])
                 
-    print("El barco a pintar es:",nuevo_barco)
+    # print("El barco a pintar es:",nuevo_barco)
     if nuevo_barco: 
         colocado = True
         for x, y in nuevo_barco:
