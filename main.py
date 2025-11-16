@@ -1,10 +1,3 @@
-<<<<<<< Updated upstream
-from funciones import generar_barco,posicionar_barco,elegir_modalidad
-import numpy as np
-
-tablero_test = np.full((10,10)," ")
-
-=======
 from funciones import generar_barco,posicionar_barco,elegir_modalidad,crear_tablero,crear_tablero_maquina, pedir_coordenadas_usuario, recibir_disparo,disparo_maquina
 from variables import bienvenida, fin_partida, victoria, derrota, barcos
 import numpy as np
@@ -18,7 +11,6 @@ tablero_maquina, tablero_mascara = crear_tablero_maquina()
 print("tablero_usuario\n",tablero_usuario)
 print("Tablero máquina:\n", tablero_mascara)
 # Usuario elige y colca barcos
->>>>>>> Stashed changes
 eleccion = elegir_modalidad()
 for tamaño in [4,3,3,2,2,2,1,1,1,1]:
     colocado = False
@@ -27,9 +19,6 @@ for tamaño in [4,3,3,2,2,2,1,1,1,1]:
         print(barco)
         tablero,colocado = posicionar_barco(barco,tablero_test)
 
-<<<<<<< Updated upstream
-print(tablero)
-=======
 
 # Máquina coloca barcos
 eleccion_maquina = "A"
@@ -77,4 +66,3 @@ while not fin_partida:
 
 
 
->>>>>>> Stashed changes

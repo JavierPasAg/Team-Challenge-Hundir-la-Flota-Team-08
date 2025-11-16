@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-# constantes
-=======
 #Variables
 
 bienvenida = """¡BIENVENIDO A HUNDIR LA FLOTA!\n
@@ -39,7 +36,6 @@ mov_barco = "O"
 mov_tocado = "X"
 mov_agua = "-"
 
->>>>>>> Stashed changes
 valores_manual = ["M","m","Manual","manual","MANUAL"]
 valores_aleatorio = ["A","a","Aleatorio","aleatorio","ALEATORIO"]
 valores_norte = ["N","n","Norte","norte","NORTE"]

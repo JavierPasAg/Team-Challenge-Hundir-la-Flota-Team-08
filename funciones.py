@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
-from variables import valores_aleatorio,valores_manual,valores_norte,valores_sur,valores_este,valores_oeste
-import numpy as np
-import random
-=======
 from variables import valores_aleatorio,valores_manual,valores_norte,valores_sur,valores_este,valores_oeste, mov_tocado,mov_barco,mov_agua, total_casillas
 import numpy as np
 import random
@@ -121,7 +116,6 @@ def recibir_disparo(fila, col,tablero_maquina,tablero_mascara, fin_partida):
     return tablero_maquina,tablero_mascara,acierto,fin_partida
     
 # Funciones Javier
->>>>>>> Stashed changes
 
 # Funcion para elegir la modalidad al colocar barcos
 # Manual: El usuario elige la colocación inicial y orientación de cada barco
