@@ -1,4 +1,4 @@
-from variables import valores_aleatorio,valores_manual,valores_norte,valores_sur,valores_este,valores_oeste, mov_tocado,mov_barco,mov_agua
+from variables import valores_aleatorio,valores_manual,valores_norte,valores_sur,valores_este,valores_oeste, mov_tocado,mov_barco,mov_agua, total_casillas
 import numpy as np
 import random
 #Funciones
@@ -16,14 +16,14 @@ def crear_tablero_maquina(filas=10, columnas=10):
     return tablero_maquina, tablero_mascara
 
 # Funciones Román
-def disparo_maquina(tablero_usuario):
+def disparo_maquina(tablero_usuario, fin_partida):
     """
     La máquina dispara aleatoriamente sobre el tablero del usuario.
     Si cae en una casilla ya disparada, muestra mensaje y vuelve a intentar.
     """
     
     nfil, ncol = tablero_usuario.shape
-    
+    acierto = False
     while True:
         fila = random.randrange(nfil)
         columna = random.randrange(ncol)
@@ -39,7 +39,7 @@ def disparo_maquina(tablero_usuario):
         if celda == "O":
             tablero_usuario[fila, columna] = "X"
             resultado = "tocado"
-        
+            acierto = True
         # 3. Si hay agua
         elif celda == " ":
             tablero_usuario[fila, columna] = "-"
@@ -49,7 +49,11 @@ def disparo_maquina(tablero_usuario):
         break
     
     print(f"La máquina ha disparado en ({fila}, {columna}) y ha sido: {resultado.upper()}")
-    return fila, columna, resultado, tablero_usuario
+    conteo = np.count_nonzero(tablero_usuario == 'X')
+    if conteo == total_casillas:
+        fin_partida = True
+
+    return tablero_usuario, acierto, fin_partida
 
 # Funciones Sara
 filas = 10
@@ -81,31 +85,35 @@ def pedir_coordenadas_usuario():
     
     return fila,col
 
-def recibir_disparo(fila, col,tablero_maquina,tablero_mascara):
+def recibir_disparo(fila, col,tablero_maquina,tablero_mascara, fin_partida):
 
     #Devuelve:
     # -1 -> ya se había disparado en esa casilla
     # "1" -> si impacta en un barco
     # "0" -> si disparo se efectua en el agua
-
+    acierto = False
     #Comprobamos si se ha realizado un disparo en una coordenada
     if tablero_mascara[fila,col] in (mov_tocado,mov_agua):
         print("Ya se habia disparado aqui")
-        return -1
+        
     
     #Si hay un barco
     if tablero_maquina[fila,col] == mov_barco:
         tablero_maquina[fila,col] = mov_tocado #Marco el barco tocado en el tablero de los barcos
         tablero_mascara[fila,col] = mov_tocado #Marco el barco tocado en el tablero de los impactos
+        acierto = True
         print ("Tocado!")
         # return 1
-        return tablero_maquina,tablero_mascara
+
     #Si hay agua
     else:
         tablero_mascara[fila,col] = mov_agua
         print("Has tocado agua")
-        return 0
+    conteo = np.count_nonzero(tablero_mascara == 'X')
+    if conteo == total_casillas:
+        fin_partida = True
 
+    return tablero_maquina,tablero_mascara,acierto,fin_partida
     
 # Funciones Javier
 
@@ -177,16 +185,19 @@ def posicionar_barco(barco, tablero):
             # raise ValueError
             # print(f"El barco {barco} no puede colocarse fuera del tablero {x,y}")
             nuevo_barco  = []
+            break
             
         else: 
-            if tablero[x,y] == 'O':
+            if tablero[x,y] == mov_barco:
                 # raise ValueError
                 # print(f"No es posible colocar el barco {barco} en una posición ocupada {x,y}")
                 nuevo_barco = []
+                break
                 
             elif comprobar_contiguos(tablero,x,y):
                 # print(f"No es posible colocar el barco {barco} en una posición contigua a otro {x,y}")
                 nuevo_barco =[]
+                break
             else:
                 nuevo_barco.append([x,y])
                 
@@ -194,7 +205,7 @@ def posicionar_barco(barco, tablero):
     if nuevo_barco: 
         colocado = True
         for x, y in nuevo_barco:
-            tablero[x,y] = 'O'
+            tablero[x,y] = mov_barco
     return tablero,colocado
 
 # Función para comprobar las casillas contiguas a una posición x e y dada y ver si tienen valor 'O' de barco
@@ -205,6 +216,6 @@ def comprobar_contiguos(tablero, x, y):
 
     for i in range(max(0, x-1), min(filas, x+2)):
         for j in range(max(0, y-1), min(columnas, y+2)):
-            if tablero[i][j] == 'O':
+            if tablero[i][j] == mov_barco:
                 return True
     return False

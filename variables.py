@@ -13,7 +13,12 @@ bienvenida = """¡BIENVENIDO A HUNDIR LA FLOTA!\n
 4. El juego termina cuando un jugador pierde todos sus barcos.\n
 ¡Buena suerte!"""
 
-
+fin_partida = False
+victoria = """¡Enhorabuena!\n
+Has ganado la partida\n
+Tú eres el verdadero máquina"""
+derrota = """¡Vaya!, Has perdido la partida.\n
+Vuelve a intentarlo"""
 usuario1 = "Máquina"
 usuario2 = "Yo"
 
@@ -25,8 +30,8 @@ tablero = n_filas = 10; n_columnas = 10
 #b3 (tamaño 3)= 2 barcos
 #b4 (tamaño 4) = 1 barco
 
-barcos = [1,1,1,1,2,2,2,3,3,4]
-
+barcos = [4,3,3,2,2,2,1,1,1,1]
+total_casillas = 20
 mov_barco = "O"
 mov_tocado = "X"
 mov_agua = "-"
