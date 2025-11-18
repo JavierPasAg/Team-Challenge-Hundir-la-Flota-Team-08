@@ -183,25 +183,25 @@ def posicionar_barco(barco, tablero):
 
         if not (0 <= x < tablero.shape[0] and 0 <= y < tablero.shape[1]):
             # raise ValueError
-            print(f"El barco {barco} no puede colocarse fuera del tablero {x,y}")
+            # print(f"El barco {barco} no puede colocarse fuera del tablero {x,y}")
             nuevo_barco  = []
             break
             
         else: 
             if tablero[x,y] == mov_barco:
                 # raise ValueError
-                print(f"No es posible colocar el barco {barco} en una posición ocupada {x,y}")
+                # print(f"No es posible colocar el barco {barco} en una posición ocupada {x,y}")
                 nuevo_barco = []
                 break
                 
             elif comprobar_contiguos(tablero,x,y):
-                print(f"No es posible colocar el barco {barco} en una posición contigua a otro {x,y}")
+                # print(f"No es posible colocar el barco {barco} en una posición contigua a otro {x,y}")
                 nuevo_barco =[]
                 break
             else:
                 nuevo_barco.append([x,y])
                 
-    print("El barco a pintar es:",nuevo_barco)
+    # print("El barco a pintar es:",nuevo_barco)
     if nuevo_barco: 
         colocado = True
         for x, y in nuevo_barco:
