@@ -35,29 +35,6 @@ print("Tablero_maquina Máscara:\n",tablero_mascara)
 
 # BUCLE CON ESTO
 # Pedimos coordenadas
-fila_elegida, columna_elegida = pedir_coordenadas_usuario()
-print(fila_elegida,columna_elegida)
-tablero_maquina,tablero_mascara = recibir_disparo(fila_elegida,columna_elegida,tablero_maquina,tablero_mascara)
-
-print("Tablero_maquina:\n",tablero_maquina)
-print("Tablero_maquina Máscara:\n",tablero_mascara)
-
-
-# Máquina coloca barcos
-eleccion_maquina = "A"
-for tamaño in barcos:
-    colocado = False
-    while not colocado:
-        barco = (generar_barco(eleccion_maquina,tamaño))
-        print(barco)
-        tablero_maquina,colocado = posicionar_barco(barco,tablero_maquina)
-
-print("Tablero usuario:\n",tablero)
-print("Tablero_maquina:\n",tablero_maquina)
-print("Tablero_maquina Máscara:\n",tablero_mascara)
-
-# BUCLE CON ESTO
-# Pedimos coordenadas
 while not fin_partida:
     fin_partida
     acierto_usuario = True
