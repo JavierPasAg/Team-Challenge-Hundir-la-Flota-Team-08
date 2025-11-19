@@ -33,14 +33,9 @@ usuario2 = "Yo"
 
 tablero = n_filas = 10; n_columnas = 10
 
-#Barcos
-#b1(tamaño 1)= 4 barcos
-#b2 (tamaño 2)= 3 barcos
-#b3 (tamaño 3)= 2 barcos
-#b4 (tamaño 4) = 1 barco
-
 barcos = [4,3,3,2,2,2,1,1,1,1]
-total_casillas = 20
+total_casillas = sum(barcos)
+
 mov_barco = "O"
 mov_tocado = "X"
 mov_agua = "-"

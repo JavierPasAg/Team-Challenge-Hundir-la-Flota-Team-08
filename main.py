@@ -16,7 +16,7 @@ print("Tablero usuario\n",tablero_usuario)
 print("Tablero enemigo:\n", tablero_mascara)
 # Usuario elige y colca barcos
 eleccion = elegir_modalidad()
-for tamaño in [4,3,3,2,2,2,1,1,1,1]:
+for tamaño in barcos:
     colocado = False
     while not colocado:
         barco = (generar_barco(eleccion,tamaño))
@@ -26,7 +26,7 @@ for tamaño in [4,3,3,2,2,2,1,1,1,1]:
 
 # Máquina coloca barcos
 eleccion_maquina = "A"
-for tamaño in [4,3,3,2,2,2,1,1,1,1]:
+for tamaño in barcos:
     colocado = False
     while not colocado:
         barco = (generar_barco(eleccion_maquina,tamaño))
@@ -34,7 +34,6 @@ for tamaño in [4,3,3,2,2,2,1,1,1,1]:
         tablero_maquina,colocado = posicionar_barco(barco,tablero_maquina)
 
 print("Tablero usuario:\n",tablero)
-print("Tablero trampa:\n", tablero_maquina)
 print("Tablero enemigo:\n",tablero_mascara)
 
 def separador(titulo=None):
@@ -59,7 +58,6 @@ while not fin_partida:
         print("""
               """)
         print("Tablero usuario:\n",tablero)
-        print("Tablero trampa:\n", tablero_maquina)
         print("Tablero enemigo:\n",tablero_mascara)
         if fin_partida:
             print(victoria)
@@ -75,7 +73,6 @@ while not fin_partida:
         print("""
               """)
         print("Tablero usuario:\n",tablero)
-        print("Tablero trampa:\n", tablero_maquina)
         print("Tablero enemigo:\n",tablero_mascara)
         if fin_partida:
             print(derrota)
