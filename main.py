@@ -6,8 +6,6 @@ from funciones import (
 from variables import bienvenida, fin_partida, victoria, derrota, barcos
 import numpy as np
 
-# tablero_test = np.full((10,10)," ")
-# EJECUTAR CON: python main.py
 print(bienvenida)
 
 tablero_usuario = crear_tablero()

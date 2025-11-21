@@ -124,11 +124,9 @@ def recibir_disparo(fila, col,tablero_maquina,tablero_mascara, fin_partida):
 def elegir_modalidad():
     eleccion = input("¿Cómo quieres crear los barcos?\n" \
     "(Manual (M) o Aleatorio (A))\n")
-    
     while eleccion not in valores_manual and eleccion not in valores_aleatorio: 
         eleccion = input("Introduce un valor válido\n" \
     "(Manual (M) o Aleatorio (A))\n")
-    
     return eleccion
 
 # Función para crear cada barco en función de su tamaño, estableciendo el punto de inicio del barco
@@ -147,9 +145,8 @@ def generar_barco(eleccion,tamaño):
         print("Has elegido aleatorio.")
         pos_x = np.random.randint(0,10)
         pos_y = np.random.randint(0,10)
-        barco_inicio = np.array([(pos_x,pos_y)])
-        cardinales = ["N","S","E","O"]
-        orientacion = random.choice(cardinales) # Genero la orientación al azar
+        barco_inicio = np.array([(pos_x,pos_y)]) 
+        orientacion = random.choice(["N","S","E","O"]) # Genero la orientación al azar
         barco = ampliar_barco(orientacion,pos_x,pos_y,barco_inicio,tamaño)
 
     return barco
