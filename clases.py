@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 #Sergi
 
+=======
+>>>>>>> Sergi
 import numpy as np
 import random
 from variables import dimensiones_tablero, barco, movimientos
@@ -44,3 +47,7 @@ class Barco:
 
     def hundido (self) #Devuelve True si el barco se hunde.
         return f"Barcos {self.nombre} ({self.eslora}) vidas = {self.vidas}"
+<<<<<<< HEAD
+=======
+
+>>>>>>> Sergi

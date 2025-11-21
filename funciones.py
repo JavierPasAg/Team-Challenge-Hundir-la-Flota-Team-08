@@ -124,11 +124,17 @@ def recibir_disparo(fila, col,tablero_maquina,tablero_mascara, fin_partida):
 def elegir_modalidad():
     eleccion = input("¿Cómo quieres crear los barcos?\n" \
     "(Manual (M) o Aleatorio (A))\n")
+<<<<<<< HEAD
     
     while eleccion not in valores_manual and eleccion not in valores_aleatorio: 
         eleccion = input("Introduce un valor válido\n" \
     "(Manual (M) o Aleatorio (A))\n")
     
+=======
+    while eleccion not in valores_manual and eleccion not in valores_aleatorio: 
+        eleccion = input("Introduce un valor válido\n" \
+    "(Manual (M) o Aleatorio (A))\n")
+>>>>>>> Sergi
     return eleccion
 
 # Función para crear cada barco en función de su tamaño, estableciendo el punto de inicio del barco
@@ -147,9 +153,14 @@ def generar_barco(eleccion,tamaño):
         print("Has elegido aleatorio.")
         pos_x = np.random.randint(0,10)
         pos_y = np.random.randint(0,10)
+<<<<<<< HEAD
         barco_inicio = np.array([(pos_x,pos_y)])
         cardinales = ["N","S","E","O"]
         orientacion = random.choice(cardinales) # Genero la orientación al azar
+=======
+        barco_inicio = np.array([(pos_x,pos_y)]) 
+        orientacion = random.choice(["N","S","E","O"]) # Genero la orientación al azar
+>>>>>>> Sergi
         barco = ampliar_barco(orientacion,pos_x,pos_y,barco_inicio,tamaño)
 
     return barco
@@ -183,25 +194,41 @@ def posicionar_barco(barco, tablero):
 
         if not (0 <= x < tablero.shape[0] and 0 <= y < tablero.shape[1]):
             # raise ValueError
+<<<<<<< HEAD
             # print(f"El barco {barco} no puede colocarse fuera del tablero {x,y}")
+=======
+            print(f"El barco {barco} no puede colocarse fuera del tablero {x,y}")
+>>>>>>> Sergi
             nuevo_barco  = []
             break
             
         else: 
             if tablero[x,y] == mov_barco:
                 # raise ValueError
+<<<<<<< HEAD
                 # print(f"No es posible colocar el barco {barco} en una posición ocupada {x,y}")
+=======
+                print(f"No es posible colocar el barco {barco} en una posición ocupada {x,y}")
+>>>>>>> Sergi
                 nuevo_barco = []
                 break
                 
             elif comprobar_contiguos(tablero,x,y):
+<<<<<<< HEAD
                 # print(f"No es posible colocar el barco {barco} en una posición contigua a otro {x,y}")
+=======
+                print(f"No es posible colocar el barco {barco} en una posición contigua a otro {x,y}")
+>>>>>>> Sergi
                 nuevo_barco =[]
                 break
             else:
                 nuevo_barco.append([x,y])
                 
+<<<<<<< HEAD
     # print("El barco a pintar es:",nuevo_barco)
+=======
+    print("El barco a pintar es:",nuevo_barco)
+>>>>>>> Sergi
     if nuevo_barco: 
         colocado = True
         for x, y in nuevo_barco:
