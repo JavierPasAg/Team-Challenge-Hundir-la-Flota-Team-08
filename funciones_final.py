@@ -1,4 +1,4 @@
-from variables import valores_aleatorio,valores_manual,valores_norte,valores_sur,valores_este,valores_oeste, mov_tocado,mov_barco,mov_agua, total_casillas
+from variables_final import valores_aleatorio,valores_manual,valores_norte,valores_sur,valores_este,valores_oeste, mov_tocado,mov_barco,mov_agua, total_casillas
 import numpy as np
 import random
 #Funciones
