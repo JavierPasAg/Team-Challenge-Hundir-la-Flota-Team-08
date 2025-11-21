@@ -6,7 +6,6 @@ from funciones import (
 from variables import bienvenida, fin_partida, victoria, derrota, barcos
 import numpy as np
 
->>>>>>> Sergi
 print(bienvenida)
 
 tablero_usuario = crear_tablero()
@@ -44,7 +43,6 @@ def separador(titulo=None):
         print("-" * 60)
     print()
     
->>>>>>> Sergi
 # BUCLE CON ESTO
 # Pedimos coordenadas
 while not fin_partida:
@@ -76,7 +74,6 @@ while not fin_partida:
               """)
         print("Tablero usuario:\n",tablero)
         print("Tablero enemigo:\n",tablero_mascara)
->>>>>>> Sergi
         if fin_partida:
             print(derrota)
             break
