@@ -28,6 +28,7 @@ Has ganado la partida\n
 Tú eres el verdadero máquina"""
 derrota = """¡Vaya!, Has perdido la partida.\n
 Vuelve a intentarlo"""
+id_columnas = '| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |'
 usuario1 = "Máquina"
 usuario2 = "Yo"
 

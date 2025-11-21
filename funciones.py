@@ -33,7 +33,7 @@ def disparo_maquina(tablero_usuario, fin_partida):
         # 1. Si ya se disparó ahí → mensaje y continuar
         if celda in ("X", "-"):
             print(f"La máquina intentó disparar en ({fila}, {columna}) pero YA había disparado ahí.")
-            continue
+            resultado = "agua"
         
         # 2. Si hay barco → tocado
         if celda == "O":
@@ -102,7 +102,7 @@ def recibir_disparo(fila, col,tablero_maquina,tablero_mascara, fin_partida):
         tablero_maquina[fila,col] = mov_tocado #Marco el barco tocado en el tablero de los barcos
         tablero_mascara[fila,col] = mov_tocado #Marco el barco tocado en el tablero de los impactos
         acierto = True
-        print ("Tocado!")
+        print ("¡Tocado!\nSigue disparando.")
         # return 1
 
     #Si hay agua
@@ -136,7 +136,7 @@ def generar_barco(eleccion,tamaño):
     barco = []
     
     if eleccion  in valores_manual:
-        print("Has elegido manual.")
+        # print("Has elegido manual.")
         pos_x = int(input (f"Indícame la fila dónde quieres poner el barco de tamaño {tamaño}:\n"))
         pos_y = int(input (f"Indícame la columna dónde quieres poner el barco de tamaño {tamaño}:\n"))
         orientacion = input("Indícame la orientación que quieres que tenga el barco:\n")
@@ -144,7 +144,7 @@ def generar_barco(eleccion,tamaño):
         barco = ampliar_barco(orientacion,pos_x,pos_y,barco_inicio,tamaño)
 
     if eleccion in valores_aleatorio:
-        print("Has elegido aleatorio.")
+        # print("Has elegido aleatorio.")
         pos_x = np.random.randint(0,10)
         pos_y = np.random.randint(0,10)
         barco_inicio = np.array([(pos_x,pos_y)]) 
@@ -182,25 +182,25 @@ def posicionar_barco(barco, tablero):
 
         if not (0 <= x < tablero.shape[0] and 0 <= y < tablero.shape[1]):
             # raise ValueError
-            print(f"El barco {barco} no puede colocarse fuera del tablero {x,y}")
+            # print(f"El barco {barco} no puede colocarse fuera del tablero {x,y}")
             nuevo_barco  = []
             break
             
         else: 
             if tablero[x,y] == mov_barco:
                 # raise ValueError
-                print(f"No es posible colocar el barco {barco} en una posición ocupada {x,y}")
+                # print(f"No es posible colocar el barco {barco} en una posición ocupada {x,y}")
                 nuevo_barco = []
                 break
                 
             elif comprobar_contiguos(tablero,x,y):
-                print(f"No es posible colocar el barco {barco} en una posición contigua a otro {x,y}")
+                # print(f"No es posible colocar el barco {barco} en una posición contigua a otro {x,y}")
                 nuevo_barco =[]
                 break
             else:
                 nuevo_barco.append([x,y])
                 
-    print("El barco a pintar es:",nuevo_barco)
+    # print("El barco a pintar es:",nuevo_barco)
     if nuevo_barco: 
         colocado = True
         for x, y in nuevo_barco:

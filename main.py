@@ -3,7 +3,7 @@ from funciones import (
     crear_tablero_maquina, pedir_coordenadas_usuario, recibir_disparo,
     disparo_maquina
 )
-from variables import bienvenida, fin_partida, victoria, derrota, barcos
+from variables import bienvenida, fin_partida, victoria, derrota, barcos, id_columnas
 import numpy as np
 
 print(bienvenida)
@@ -11,8 +11,8 @@ print(bienvenida)
 tablero_usuario = crear_tablero()
 tablero_maquina, tablero_mascara = crear_tablero_maquina()
 
-print("Tablero usuario\n",tablero_usuario)
-print("Tablero enemigo:\n", tablero_mascara)
+print("Tablero usuario\n",id_columnas,"\n",tablero_usuario,"\n",id_columnas,"\n")
+print("Tablero enemigo:\n",id_columnas,"\n", tablero_mascara,"\n",id_columnas,"\n")
 # Usuario elige y colca barcos
 eleccion = elegir_modalidad()
 for tamaño in barcos:
@@ -20,7 +20,6 @@ for tamaño in barcos:
     colocado = False
     while not colocado:
         barco = (generar_barco(eleccion,tamaño))
-        print(barco)
         tablero,colocado = posicionar_barco(barco,tablero_usuario)
 
 
@@ -30,11 +29,10 @@ for tamaño in barcos:
     colocado = False
     while not colocado:
         barco = (generar_barco(eleccion_maquina,tamaño))
-        print(barco)
         tablero_maquina,colocado = posicionar_barco(barco,tablero_maquina)
 
-print("Tablero usuario:\n",tablero)
-print("Tablero enemigo:\n",tablero_mascara)
+print("Tablero usuario:\n",id_columnas,"\n",tablero,"\n",id_columnas,"\n")
+print("Tablero enemigo:\n",id_columnas,"\n",tablero_mascara,"\n",id_columnas,"\n")
 
 def separador(titulo=None):
     print("\n" + "=" * 60)
@@ -57,8 +55,8 @@ while not fin_partida:
         tablero_maquina,tablero_mascara, acierto_usuario, fin_partida = recibir_disparo(fila_elegida,columna_elegida,tablero_maquina,tablero_mascara, fin_partida)
         print("""
               """)
-        print("Tablero usuario:\n",tablero)
-        print("Tablero enemigo:\n",tablero_mascara)
+        print("Tablero usuario:\n",id_columnas,"\n",tablero,"\n",id_columnas,"\n")
+        print("Tablero enemigo:\n",id_columnas,"\n",tablero_mascara,"\n",id_columnas,"\n")
         if fin_partida:
             print(victoria)
             break
@@ -72,8 +70,8 @@ while not fin_partida:
         tablero_usuario,acierto_maquina, fin_partida = disparo_maquina(tablero_usuario, fin_partida)
         print("""
               """)
-        print("Tablero usuario:\n",tablero)
-        print("Tablero enemigo:\n",tablero_mascara)
+        print("Tablero usuario:\n",id_columnas,"\n",tablero,"\n",id_columnas,"\n")
+        print("Tablero enemigo:\n",id_columnas,"\n",tablero_mascara,"\n",id_columnas,"\n")
         if fin_partida:
             print(derrota)
             break
